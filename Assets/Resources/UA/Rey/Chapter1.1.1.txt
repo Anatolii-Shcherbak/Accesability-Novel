@@ -1,0 +1,15 @@
+Narrator "You have successfully passed several traps "
+Narrator "You feel adrenalin, as futher you riding, more dangarous road ahead become"
+Narrator "Suddenly from your right side you hear the Explosion "
+Chsou("vehicleExplosion"
+
+Narrator "Move QUick!"
+
+show("Choose" ButOpt1 ButOpt2 EndOption
+ChEndBut("ButOpt1"
+Hide("ButOpt1"
+
+Chtext("Adjust speed" Option2 
+Chtext("Move to Right" EndOpt   
+
+DeadReason("You went to the epicenter of explosion! You were hit by debris and died..."

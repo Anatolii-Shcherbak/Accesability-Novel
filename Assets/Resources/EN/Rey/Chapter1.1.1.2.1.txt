@@ -1,0 +1,43 @@
+Narrator " You ignored the girl and took first place "
+"Joy, adrenaline and pride fill you from the inside out "
+"However, your victory is marred by the sight of the girl's corpse being carried past you. You feel guilty for her death. But what's done is done. "
+"It's time to take your prize"
+
+Chscene("Table2"
+Narrator " You went to rest room to meet organisator and took your money "
+Chchar("L" BigMa
+
+
+BigMa "A brave one, or stupid perhaps. In any case there is your money child"
+" Don't rush to leave, I may have an offer for you..."
+ResetCharPos("R"
+Chchar("R" GG.Idle
+
+GG "Hm? Who are you?"
+
+BigMa "You wouldn't recognize the organizer of the race. Young people these days do first and think later."
+"I heard about your situation, and believe the old lady, they won't let you go when you give them the money"
+
+GG "How... How do you know?"
+
+BigMa "I've lived long enough to know what's what. For some reason, the fanatics are after your sister, and money is just a pretext"
+"But fear not, They won't dare touch you if you work for me"
+
+GG "I..."
+
+BigMa "Let's change the place of conversation to a more attractive one."
+
+Chscene("Table1"
+Narrator"..."
+BigMa "You're too worried. Nothing relaxes you like a game of board games. Would you like to play with an old lady?"
+"You're too worried, you know"
+
+
+Invischar("L" 
+Invischar("R" 
+Hide("ButtonsMenu"
+Hide("Backgrund"
+Hide("4-Dialogue"
+show("3-Cinematic"  GoodEnd1 
+GetAchiv("End2" 
+

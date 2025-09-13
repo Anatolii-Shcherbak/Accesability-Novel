@@ -1,0 +1,22 @@
+Narrator " Driving at high speed, you grabbed a girl "
+"Suddenly you realize that you have a flat tire on your motorcycle. Together with the girl, you flew to the ground  "
+
+"You see another biker crossing the finish line in front of you. You were so close... "
+"The girl tries to thank you, but for you it's nothing, you couldn't get the money. With a blank stare, you head to the waiting room "
+
+Chscene("Table2"
+Narrator"."
+Chchar("L" Andre
+
+Narrator " A stranger walks into your room  "
+
+Andre "Your performance impressed me. Before choosing money and other people's lives, you did not choose your own benefit "
+" I am Andre police captain, I think I can offer you something  "
+
+Invischar("L" 
+Invischar("R" 
+Hide("ButtonsMenu"
+Hide("Backgrund"
+Hide("4-Dialogue"
+show("3-Cinematic"  GoodEnd2 
+GetAchiv("End3" 

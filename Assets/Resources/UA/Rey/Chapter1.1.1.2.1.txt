@@ -1,0 +1,20 @@
+Narrator " You ignored the girl and took first place "
+"Joy, adrenaline and pride fill you from the inside out "
+"However, your victory is marred by the sight of the girl's corpse being carried past you. You feel guilty for her death. But what's done is done. "
+"It's time to take your prize"
+
+Chscene("Table2"
+Narrator"."
+Chchar("L" BigMa
+Narrator " You went to rest room to meet organisator and took your money "
+
+BigMa "A brave one, or stupid perhaps. In any case there is your money child"
+" Don't rush to leave, I may have an offer for you..."
+Invischar("L" 
+Invischar("R" 
+Hide("ButtonsMenu"
+Hide("Backgrund"
+Hide("4-Dialogue"
+show("3-Cinematic"  GoodEnd1 
+GetAchiv("End2" 
+

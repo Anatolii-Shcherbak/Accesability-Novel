@@ -1,0 +1,39 @@
+Rey "Confused"
+"What do you mean, we can't  run, 'Church' will find us anywhere"
+Mayua "But, but..."
+moveChar("right" Character1 4
+Rey "'Hugs'"
+"Everything will be alright... We can handle it"
+Invischar("L" 
+Invischar("R" 
+
+Chscene("Station1"
+Narrator  "..."
+
+Chchar("L" Biker
+
+Biker as Anouncer "HEY bitches and bros and non-binary hoes!"
+"Are you ready for DEATH  RIDE?  HOPE SO, cause our contestents already there"
+"Those crazy bastards risking their lifes for chance to win great amount of money and of course to entertain you"
+"Make your bets, take your beer and enjoy the show!"
+Invischar("L" 
+
+Chsou("door-knocking-angry-88120"
+Chmus("Racing"
+
+
+Chscene("Motorcycles"
+Narrator "You sat on bike and started race"
+"Despite the proficiency of the other competitors you on the leading position from the start"
+" You see 2 ways ahead"
+QuickSave("")
+"Left is shorter but much more dangerous, Right is longer but safer. Which way to choose?"
+
+
+show("Choose"  ButOpt1 ButOpt2 EndOption
+ChEndBut("ButOpt2"
+Hide("ButOpt2"
+DeadReason("There is no SAFE rout! That was a last words that you heard..."
+
+Chtext("Left" Option1   
+Chtext("Right" EndOpt 

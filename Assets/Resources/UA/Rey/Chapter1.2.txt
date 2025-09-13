@@ -1,0 +1,29 @@
+Rey "You're right. Let's just run away"
+Mayua "*Smiling*"
+Invischar("L" 
+Invischar("R" 
+
+
+Chscene("Bed3"
+Narrator "..."
+Chchar("R" Rey.Idle
+Chsou("door-knocking-angry-88120"
+??? "*Door opening sound*"
+
+Chchar("L" Bandyt
+
+Bandyt as ??? "Did you really think you could run without paying debts?"
+Narrator " suddenly man with a gun burst to your room"
+Narrator " In a panic, you try to grab something to defend yourself, this made piss of your visitor"
+
+Chsou("submachine-gun-79846"
+Invischar("L" 
+Invischar("R" 
+Hide("ButtonsMenu"
+Hide("4-Dialogue"
+
+show("3-Cinematic"  BD
+Chtext("'Purified' Debt" PlayerEnding   
+GetAchiv("End1" 
+
+Chscene("Death"

@@ -1,0 +1,12 @@
+Narrator " Clatter, screams, explosions all merged into one sound."
+"without hesaring anything, giving your best, you rush ahead, avoiding all obstacle"
+"Finally You see the finish line"
+"But your eye catches sight of a girl, she has fallen into one of the “traps” right before the finish line, at this speed you could save her from death"
+"Will you help her?"
+
+show("Choose" ButOpt1 ButOpt2 
+
+Chtext("Ignore" Option1   
+Chtext("Save girl" Option2 
+Chsou("FemaleHelpScream"
+

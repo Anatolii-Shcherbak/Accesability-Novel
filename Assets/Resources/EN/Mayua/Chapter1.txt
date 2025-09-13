@@ -1,0 +1,19 @@
+Chchar("L" GG.Idle
+Chchar("R" SUP.Sad
+Chmus("Subway"
+
+GG "I told you brother, you don't have to follow me. This is not a safe place"
+
+SUP "But. But it's my fault. you shouldn't risck you life for me!"
+"I know you're a good racer, but underground racing is too dangerous. The other participants are a gang of bandits. They will kill you "
+
+Chchar("L" GG.Angry
+GG "We have no other choice, we have to return the money tomorrow, otherwise they might kill you."
+
+
+SUP "Why don't you understand that just as you don't want to lose me, I don't want to lose you?"
+"Let's just... run away."
+
+unact("SUP"), show("Choose"  ButOpt1 ButOpt2
+Chtext("Fight" Option1   
+Chtext("Run away" Option2 
