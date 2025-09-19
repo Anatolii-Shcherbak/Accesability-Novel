@@ -10,14 +10,10 @@ using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
     public GameObject menu, prequel, Loaddd, Help, Achiv, CharChoose, config;
-    public TextMeshProUGUI textMeshPro;
-    public Text sign, End1, End2, End3, lang;
-    public string newText;
-    public int update = 0;
-    private bool isTyping = false;
-    private Coroutine typeCoroutine;
+    public Text  End1, End2, End3, lang, ChaptNo, ChaptName;
     public AudioSource MainMusick;
     public AudioClip newClip;
+    public float typingSpeed = 0.05f;
 
     private string[] languages = { "EN", "UA" };
     private int languageIndex = 0;
@@ -128,90 +124,60 @@ public class StartMenu : MonoBehaviour
     {
         Application.Quit();
     }
-////////////////////////////////////// QUIT BUTTON
+    ////////////////////////////////////// QUIT BUTTON
 
 
     ////////////////////////////////////////// NEW GAME 
-    private IEnumerator WaitAndDisplayText()
+
+     private IEnumerator ShowText()
     {
-        while (update < 3)  // Continue until all lines are displayed
+        string text1 = "Chapter I";
+        string text2 = "Beyond The Gray";
+
+        // Очищуємо початково
+        ChaptNo.text = "";
+        ChaptName.text = "";
+        yield return new WaitForSeconds(2f);
+        // Друкуємо перший рядок
+        foreach (char c in text1)
         {
-            float elapsedTime = 0f;
-            bool isClicked = false;
-
-            // Wait for either 2 seconds or a click
-            while (elapsedTime < 2f && !isClicked)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    isClicked = true;
-                }
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            update++;
-            typeCoroutine = StartCoroutine(TypeText(GetNextLine()));
-
-            while (isTyping)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    StopCoroutine(typeCoroutine);
-                    textMeshPro.text = newText + GetNextLine();
-                    newText += GetNextLine();  // Update accumulated text
-                    isTyping = false;  // Mark typing as complete
-                }
-                yield return null;
-            }
+            ChaptNo.text += c;
+            yield return new WaitForSeconds(typingSpeed);
         }
-       // sign.text = "Mayua";
+
+        yield return new WaitForSeconds(0.5f); // пауза між рядками
+
+        // Друкуємо другий рядок
+        foreach (char c in text2)
+        {
+            ChaptName.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
         StartCoroutine(StartGamee());
     }
+
+
     private IEnumerator StartGamee()
     {
         float elapsedTime = 0f;
-        while (elapsedTime < 10f && !Input.GetMouseButtonDown(0))
+        while (elapsedTime < 1.5f)
         {
             elapsedTime += Time.deltaTime;
             yield return null;
         }
             SceneManager.LoadScene("1");
     }
- private IEnumerator TypeText(string line)
-    {
-        isTyping = true;
-        textMeshPro.text = newText;  // Reset to show accumulated text
-        // Display the line one character at a time
-        for (int i = 0; i <= line.Length; i++)
-        {
-            textMeshPro.text = newText + line.Substring(0, i);
-            yield return new WaitForSeconds(0.05f);  // Adjust typing speed here
-        }
-        // When done, mark typing as complete and update accumulated text
-        newText += line;
-        isTyping = false;
-    }
 
-    private string GetNextLine()
-    {
-        switch (update)
-        {
-
-            case 1: return "Сhapter 1";
-            case 2: return "\nBeyond The Gray";
-             default: return "1";
-        }
-
-    }
+   
 
     public void ProcedePrequel()
     {
         CharChoose.SetActive(false);
         prequel.SetActive(true);
         MainMusick.clip = newClip;
+        MainMusick.loop = false;
         MainMusick.Play();
-        StartCoroutine(WaitAndDisplayText());
+        StartCoroutine(ShowText());
     }
 
     public void chosinGGRey()

@@ -19,7 +19,7 @@ public class ENMenu : MonoBehaviour
 
     public void Translate()
     {
-        gamemenu.text = "Against the Iron Sky";
+        gamemenu.text = "BOUDNLESS COLORS";
         start.text = "Options";
     }
 }
