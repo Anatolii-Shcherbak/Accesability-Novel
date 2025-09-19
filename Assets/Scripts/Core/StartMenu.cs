@@ -134,7 +134,7 @@ public class StartMenu : MonoBehaviour
     ////////////////////////////////////////// NEW GAME 
     private IEnumerator WaitAndDisplayText()
     {
-        while (update < 6)  // Continue until all lines are displayed
+        while (update < 3)  // Continue until all lines are displayed
         {
             float elapsedTime = 0f;
             bool isClicked = false;
@@ -165,7 +165,7 @@ public class StartMenu : MonoBehaviour
                 yield return null;
             }
         }
-        sign.text = "Mayua";
+       // sign.text = "Mayua";
         StartCoroutine(StartGamee());
     }
     private IEnumerator StartGamee()
@@ -197,24 +197,10 @@ public class StartMenu : MonoBehaviour
     {
         switch (update)
         {
-            case 1:
-                return "";
 
-            case 2:
-                return  "\nPeople like to talk about equality.";
-
-            case 3:
-                return "\nHowever, people are not equal \nin rights from birth. ";
-
-            case 4:
-                return "\nThis truth is well known to slum dwellers...";
-               
-            case 5:
-                return "\nEven so, WE will fight for a better future,";
-              
-            case 6:
-                return "\nOUR future...";
-              default: return "";
+            case 1: return "Ñhapter 1";
+            case 2: return "\nBeyond The Gray";
+             default: return "1";
         }
 
     }
