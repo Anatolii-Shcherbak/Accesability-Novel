@@ -1,19 +1,14 @@
-Chchar("L" GG.Idle
-Chchar("R" SUP.Sad
-Chmus("Subway"
+Chmus("Lullabye - Density & Time"
+Narrator "I have seen this world in gray colors for as long as I can remember."
+"It's funny, but I didn't know that I didn't see the world like other people. As a child, I thought I just had bad eyesight. I understood the concept of colors, but I could never see them."
+"The problem arose when I became interested in graffiti art. Others didn't understand me, they thought my strange combination of colors and drawings was ridiculous."
+"I hate thoose days..."
 
-GG "I told you brother, you don't have to follow me. This is not a safe place"
+Chsou("TeensMockingNeil"
 
-SUP "But. But it's my fault. you shouldn't risck you life for me!"
-"I know you're a good racer, but underground racing is too dangerous. The other participants are a gang of bandits. They will kill you "
-
-Chchar("L" GG.Angry
-GG "We have no other choice, we have to return the money tomorrow, otherwise they might kill you."
+Chscene("EliasScene1_Monochrome"
 
 
-SUP "Why don't you understand that just as you don't want to lose me, I don't want to lose you?"
-"Let's just... run away."
 
-unact("SUP"), show("Choose"  ButOpt1 ButOpt2
-Chtext("Fight" Option1   
-Chtext("Run away" Option2 
+
+

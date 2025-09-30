@@ -39,6 +39,8 @@ namespace DIALOGUE
             if (matches.Count == 0)
             {
                 name = rawSpeaker;
+                if (name == "Narrator")
+                    return;
                 if (name == "GG")
                     name = TestDialogueFiles.mainCharacter;
                 if (name == "SUP")

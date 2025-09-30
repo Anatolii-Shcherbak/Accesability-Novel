@@ -1,6 +1,8 @@
+
 Chchar("L" GG.Idle
 Chchar("R" SUP.Sad
 Chmus("Subway"
+Chscene("EliasScene1_Monochrome"
 
 GG "I told you sister, you don't have to follow me. This is not a safe place"
 

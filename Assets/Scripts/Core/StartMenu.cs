@@ -160,7 +160,7 @@ public class StartMenu : MonoBehaviour
     private IEnumerator StartGamee()
     {
         float elapsedTime = 0f;
-        while (elapsedTime < 1.5f)
+        while (elapsedTime < 0.5f)
         {
             elapsedTime += Time.deltaTime;
             yield return null;

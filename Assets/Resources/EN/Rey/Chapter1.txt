@@ -1,3 +1,4 @@
+Chscene("EliasScene1_Monochrome"
 Chchar("L" GG.Idle
 Chchar("R" SUP.Sad
 Chmus("Subway"
