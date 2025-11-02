@@ -10829,7 +10829,7 @@ GameObject:
   - component: {fileID: 1252432135}
   - component: {fileID: 1252432134}
   m_Layer: 5
-  m_Name: MayaBut (1)
+  m_Name: 'NeilBut '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10913,7 +10913,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 278393016}
         m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
-        m_MethodName: chosinGGMayua
+        m_MethodName: chosinGGNeil
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

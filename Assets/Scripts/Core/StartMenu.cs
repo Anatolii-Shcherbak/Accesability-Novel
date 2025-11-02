@@ -187,10 +187,10 @@ public class StartMenu : MonoBehaviour
         TestDialogueFiles.SupportCharacter = "Mayua";
     }
 
-    public void chosinGGMayua()
+    public void chosinGGNeil()
     {
 
-        TestDialogueFiles.mainCharacter = "Mayua";
+        TestDialogueFiles.mainCharacter = "Neil";
         TestDialogueFiles.SupportCharacter = "Rey";
     }
     public void StartGame()

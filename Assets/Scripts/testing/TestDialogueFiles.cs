@@ -10,10 +10,12 @@ public class TestDialogueFiles : MonoBehaviour
     private string currentAct;
     TextAsset textAsset;
     List<string> lines;
+    protected List<string> mainCharacters = new List<string> { "Neil", "Jessa", "Elias", "Soundiel", "Zia-Notte" };
+
     private string savePath, savePath1;
     private string buttName;
     public static string Languague = "EN";
-    public static string mainCharacter = "Rey";
+    public static string mainCharacter = "Neil";
     public static string SupportCharacter = "Mayua";
 
     void Start()

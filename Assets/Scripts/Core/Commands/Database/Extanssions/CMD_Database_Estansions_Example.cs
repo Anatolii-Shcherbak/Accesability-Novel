@@ -18,6 +18,7 @@ namespace TESTING
     public class CMD_Database_Estansions_Example : CMD_DatabaseEstansions
     {
         public static string End1, End2, End3;
+       
         new public static void Extend(CommandDatabase database)
         {
             database.AddCommand("print", new Action(PrintDefaultMessage));
@@ -37,11 +38,14 @@ namespace TESTING
   
 
            database.AddCommand("Chscene", new Func<string, IEnumerator>(Сhscen));
+       //Тут передавався обьект треба зробить тесаме але без обьекта бо хуйня просто число передать
+            database.AddCommand("Chchapt", new Func<string, IEnumerator>(Chchapt));
 
             database.AddCommand("Chchar", new Func<string[], IEnumerator>(Chchar));
 
             database.AddCommand("Chmus", new Func<string, IEnumerator>(Chmus));
             database.AddCommand("Chsou", new Func<string, IEnumerator>(Chsou));
+            database.AddCommand("Chovervoice", new Func<string, IEnumerator>(Chovervoice));
 
             database.AddCommand("Invischar", new Func<string, IEnumerator>(Invischar));
 
@@ -71,8 +75,8 @@ namespace TESTING
 
         }
 
-      
 
+   
         private static void PrintDefaultMessage()
         {
             Debug.Log("Printing a default message to console. ");
@@ -122,6 +126,8 @@ namespace TESTING
             }
         }
 
+      
+      
         private static IEnumerator QuickSave()
         {
             // Find the GameObject by its name
@@ -155,7 +161,15 @@ namespace TESTING
            EndOption.DeathReason = reason; 
             yield return null;
         }
-        
+
+        private static IEnumerator Chchapt(string Character)
+        {
+            /* TestDialogueFiles ChoosenPass;
+                 ChoosenPass.OnButtonClicked(Character);*/
+            yield return null; 
+        }
+  
+     
         private static IEnumerator UnActiveCharacter(string Character)
         {
             if (Character == "GG") Character = TestDialogueFiles.mainCharacter;
@@ -404,7 +418,7 @@ namespace TESTING
         
         private static IEnumerator Chmus(string audioClipName)
         {
-            GameObject targetObject = GameObject.Find("VNController");
+            GameObject targetObject = GameObject.Find("MusicController");
             if (targetObject == null)
             {
                 Debug.LogError($"VNController not found.");
@@ -412,6 +426,18 @@ namespace TESTING
             }
             AudioSource audioSource = targetObject.GetComponent<AudioSource>();
             yield return ChangeAudio(audioClipName, "Audio/", audioSource);
+        }
+
+        private static IEnumerator Chovervoice(string audioClipName)
+        {
+            GameObject targetObject = GameObject.Find("OverVoiceController");
+            if (targetObject == null)
+            {
+                Debug.LogError($"VNController not found.");
+                yield return null;
+            }
+            AudioSource audioSource = targetObject.GetComponent<AudioSource>();
+            yield return ChangeAudio(audioClipName, "Audio/OverVoice/", audioSource);
         }
 
         private static IEnumerator Chsou(string audioClipName)

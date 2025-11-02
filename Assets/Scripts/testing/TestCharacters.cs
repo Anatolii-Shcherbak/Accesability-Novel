@@ -10,7 +10,7 @@ namespace TESTING
         // Start is called before the first frame update
         void Start()
         {
-            Character Maya = CharacterManager.instance.CreateCharacter("Mayua");
+            Character Neil = CharacterManager.instance.CreateCharacter("Neil");
             Character Rey = CharacterManager.instance.CreateCharacter("Rey");
 
         }

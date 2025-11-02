@@ -90,8 +90,8 @@ namespace DIALOGUE
                 {
                     if (TestDialogueFiles.mainCharacter == "Rey")
                         speakerName = "Рей";
-                    if (TestDialogueFiles.mainCharacter == "Mayua")
-                        speakerName = "Мая";
+                    if (TestDialogueFiles.mainCharacter == "Neil")
+                        speakerName = "Нейл";
 
                     dialogueContainer.Show(speakerName);
                 }
