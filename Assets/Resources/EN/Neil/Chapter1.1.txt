@@ -1,6 +1,10 @@
+Chscene("BlackSquare"
+
 Narrator "PlaceHolder."
 
+show("Choose"  PlaceHolderButton0
 
+show("Choose"  PlaceHolderButton0 Placeholder DialougeTextMidScreen
 
 
 

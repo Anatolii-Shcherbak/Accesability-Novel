@@ -1,0 +1,7 @@
+Narrator "PlaceHolder. In this point of story line Main character is buying paint which leads to minigame"
+Narrator "minigame..."
+
+
+
+
+

@@ -3,12 +3,17 @@ Chovervoice("V1"
 Narrator "I have seen this world in gray colors for as long as I can remember."
 Chovervoice("V2"
 "It's funny, but I didn't know that I didn't see the world like other people. As a child, I thought I just had bad eyesight. I understood the concept of colors, but I could never see them."
+
+Chscene("EliasScene1_Monochrome"
+
 "The problem arose when I became interested in graffiti art. Others didn't understand me, they thought my strange combination of colors and drawings was ridiculous."
-"I hate thoose days..."
 
 Chsou("TeensMockingNeil"
 
-Chchapt("But1")
+"I hate thoose days..."
+
+Chchapt("1"
+
 
 
 

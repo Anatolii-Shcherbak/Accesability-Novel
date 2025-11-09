@@ -18,7 +18,7 @@ namespace TESTING
     public class CMD_Database_Estansions_Example : CMD_DatabaseEstansions
     {
         public static string End1, End2, End3;
-       
+
         new public static void Extend(CommandDatabase database)
         {
             database.AddCommand("print", new Action(PrintDefaultMessage));
@@ -164,9 +164,14 @@ namespace TESTING
 
         private static IEnumerator Chchapt(string Character)
         {
-            /* TestDialogueFiles ChoosenPass;
-                 ChoosenPass.OnButtonClicked(Character);*/
-            yield return null; 
+            TestDialogueFiles instance = GameObject.FindObjectOfType<TestDialogueFiles>();
+
+            if (instance != null)
+                instance.ChoosenPass(Character);
+            else
+                Debug.LogError("TestDialogueFiles not found in scene!");
+
+            yield return null;
         }
   
      
