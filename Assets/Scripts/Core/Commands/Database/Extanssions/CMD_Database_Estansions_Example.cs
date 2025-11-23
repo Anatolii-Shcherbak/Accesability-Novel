@@ -45,6 +45,7 @@ namespace TESTING
 
             database.AddCommand("Chmus", new Func<string, IEnumerator>(Chmus));
             database.AddCommand("Chsou", new Func<string, IEnumerator>(Chsou));
+            database.AddCommand("UnmMus", new Func<IEnumerator>(UnmMus));
             database.AddCommand("Chovervoice", new Func<string, IEnumerator>(Chovervoice));
 
             database.AddCommand("Invischar", new Func<string, IEnumerator>(Invischar));
@@ -443,6 +444,23 @@ namespace TESTING
             }
             AudioSource audioSource = targetObject.GetComponent<AudioSource>();
             yield return ChangeAudio(audioClipName, "Audio/OverVoice/", audioSource);
+        }
+
+        private static IEnumerator UnmMus()
+        {
+            bool isMuted = PlayerPrefs.GetInt("Muted", 0) == 1;
+
+                isMuted = !isMuted; // Toggle state
+
+                // Set global volume
+                AudioListener.volume = isMuted ? 0 : 1;
+
+                // Save mute state
+                PlayerPrefs.SetInt("Muted", isMuted ? 1 : 0);
+                PlayerPrefs.Save();
+
+            yield return null;
+
         }
 
         private static IEnumerator Chsou(string audioClipName)

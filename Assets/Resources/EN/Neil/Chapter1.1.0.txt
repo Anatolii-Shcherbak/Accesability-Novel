@@ -1,7 +1,11 @@
 Narrator "PlaceHolder. In this point of story line Main character is buying paint which leads to minigame"
 Narrator "minigame..."
 
+MusStCh(""
+Hide("ButtonsMenu"
+Hide("4-Dialogue"
 
+show("7-Minigames"  Elli1stMinigame
 
 
 
