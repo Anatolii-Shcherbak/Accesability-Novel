@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TESTING;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static TreeEditor.TextureAtlas;
+using static System.Net.Mime.MediaTypeNames;
+using Application = UnityEngine.Application;
+using Text = UnityEngine.UI.Text;
+
 
 public class StartMenu : MonoBehaviour
 {
@@ -14,8 +19,9 @@ public class StartMenu : MonoBehaviour
     public Text  End1, End2, End3, lang, ChaptNo, ChaptName;
     public Text[] Ui;
     public AudioSource MainMusick;
-    public AudioClip newClip;
+    public AudioClip Chapt1, Chapt2;
     public float typingSpeed = 0.05f;
+    public Font Notes;
 
     private string[] languages = { "EN", "UA" };
     private int languageIndex = 0;
@@ -139,7 +145,7 @@ public class StartMenu : MonoBehaviour
         PlayerPrefs.GetString(CMD_Database_Estansions_Example.End3);
 
         Debug.Log(CMD_Database_Estansions_Example.End1);
-        if (CMD_Database_Estansions_Example.End1 == "" || CMD_Database_Estansions_Example.End1 == null)
+        if (CMD_Database_Estansions_Example.End1 != "" || CMD_Database_Estansions_Example.End1 != null)
         {
             End1.gameObject.SetActive(true);
         }
@@ -173,10 +179,137 @@ public class StartMenu : MonoBehaviour
 
     ////////////////////////////////////////// NEW GAME 
 
-     private IEnumerator ShowText()
+
+    private IEnumerator ShowText2(string chaptNoText, string chaptNameText)
     {
-        string text1 = "Chapter I";
-        string text2 = "Beyond The Gray";
+     float floatAmplitude = 1f;   // how high letters bounce
+     float floatSpeed = 2f;        // bounce speed
+     float scaleAmplitude = 0.1f;  // scale bounce amount
+     float scaleSpeed = 2f;        // scale bounce speed
+     float letterDelay = 0.1f;     // delay between letters
+     float duration = 0.4f;          // total animation time per letter
+
+
+
+        // -------------------------
+        // Setup Chapter Number
+        // -------------------------
+        ChaptNo.text = "";
+        ChaptName.text = "";
+        ChaptNo.font = Notes;
+        ChaptName.font = Notes;
+
+        Vector3 noInitialPos = ChaptNo.rectTransform.anchoredPosition;
+        noInitialPos.x -= 0.2f;
+        Vector3 nameInitialPos = ChaptName.rectTransform.anchoredPosition;
+        nameInitialPos.x -= 1.1f;
+        Vector3 noInitialScale = ChaptNo.rectTransform.localScale;
+        Vector3 nameInitialScale = ChaptName.rectTransform.localScale;
+
+        // Small offsets (optional) for style
+        noInitialPos.x -= 2f;
+        noInitialPos.y += 1f;
+
+        // -------------------------
+        // Animate Chapter Number letters
+        // -------------------------
+        for (int i = 0; i < chaptNoText.Length; i++)
+        {
+            ChaptNo.text += chaptNoText[i];
+
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float time = Time.time;
+                float phase = i * 0.3f;
+
+                // Bounce
+                float yOffset = Mathf.Sin(time * floatSpeed + phase) * floatAmplitude;
+                float scale = 1f + Mathf.Sin(time * scaleSpeed + phase) * scaleAmplitude;
+
+                ChaptNo.rectTransform.anchoredPosition = noInitialPos + new Vector3(0, yOffset, 0);
+                ChaptNo.rectTransform.localScale = noInitialScale * scale;
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(letterDelay);
+        }
+
+        // -------------------------
+        // Animate Chapter Name letters (same effect)
+        // -------------------------
+        for (int i = 0; i < chaptNameText.Length; i++)
+        {
+            ChaptName.text += chaptNameText[i];
+
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float time = Time.time;
+                float phase = i * 0.3f;
+
+                // Bounce
+                float yOffset = Mathf.Sin(time * floatSpeed + phase) * floatAmplitude;
+                float scale = 1f + Mathf.Sin(time * scaleSpeed + phase) * scaleAmplitude;
+
+                ChaptName.rectTransform.anchoredPosition = nameInitialPos + new Vector3(0, yOffset, 0);
+                ChaptName.rectTransform.localScale = nameInitialScale * scale;
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(letterDelay);
+        }
+
+        // -------------------------
+        // Gentle bounce for both texts
+        // -------------------------
+        float bounceTime = 0f;
+        float totalBounceDuration = 3f; // bounce duration
+        while (bounceTime < totalBounceDuration)
+        {
+            bounceTime += Time.deltaTime;
+            float time = Time.time;
+
+            // Bounce Chapter Number letters
+            for (int i = 0; i < chaptNoText.Length; i++)
+            {
+                float phase = i * 0.3f;
+                float yOffset = Mathf.Sin(time * floatSpeed + phase) * floatAmplitude;
+                float scale = 1f + Mathf.Sin(time * scaleSpeed + phase) * scaleAmplitude;
+                ChaptNo.rectTransform.anchoredPosition = noInitialPos + new Vector3(0, yOffset, 0);
+                ChaptNo.rectTransform.localScale = noInitialScale * scale;
+            }
+
+            // Bounce Chapter Name letters
+            for (int i = 0; i < chaptNameText.Length; i++)
+            {
+                float phase = i * 0.3f;
+                float yOffset = Mathf.Sin(time * floatSpeed + phase) * floatAmplitude;
+                float scale = 1f + Mathf.Sin(time * scaleSpeed + phase) * scaleAmplitude;
+                ChaptName.rectTransform.anchoredPosition = nameInitialPos + new Vector3(0, yOffset, 0);
+                ChaptName.rectTransform.localScale = nameInitialScale * scale;
+            }
+
+            yield return null;
+        }
+
+        // Reset to original positions/scales
+        ChaptNo.rectTransform.anchoredPosition = noInitialPos;
+        ChaptNo.rectTransform.localScale = noInitialScale;
+        ChaptName.rectTransform.anchoredPosition = nameInitialPos;
+        ChaptName.rectTransform.localScale = nameInitialScale;
+
+        StartCoroutine(StartGamee());
+    }
+
+
+
+     private IEnumerator ShowText(string text1, string text2)
+    {
 
         // Очищуємо початково
         ChaptNo.text = "";
@@ -218,10 +351,8 @@ public class StartMenu : MonoBehaviour
     {
         CharChoose.SetActive(false);
         prequel.SetActive(true);
-        MainMusick.clip = newClip;
-        MainMusick.loop = false;
-        MainMusick.Play();
-        StartCoroutine(ShowText());
+
+       
     }
 
     public void chosinGGNeil()
@@ -229,7 +360,25 @@ public class StartMenu : MonoBehaviour
 
         TestDialogueFiles.mainCharacter = "Neil";
         TestDialogueFiles.SupportCharacter = "Rey";
+        MainMusick.clip = Chapt1;
+        MainMusick.loop = false;
+        MainMusick.Play();
+        StartCoroutine(ShowText("Chapter I", "Beyond The Gray"));
+
     }
+
+    public void chosinGGSoundiel()
+    {
+        TestDialogueFiles.mainCharacter = "Soundiel";
+        TestDialogueFiles.SupportCharacter = "Rey";
+        MainMusick.clip = Chapt2;
+        MainMusick.loop = false;
+        MainMusick.Play();
+        StartCoroutine(ShowText2("Chapter ll", "Soundless"));
+    }
+
+
+
     public void StartGame()
     {
         menu.SetActive(false);
