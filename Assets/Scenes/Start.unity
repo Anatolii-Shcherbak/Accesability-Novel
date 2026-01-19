@@ -2563,7 +2563,7 @@ MonoBehaviour:
   Levels:
   - {fileID: 1620615736}
   - {fileID: 1935328512}
-  level: 2
+  level: 1
 --- !u!4 &278393017
 Transform:
   m_ObjectHideFlags: 0

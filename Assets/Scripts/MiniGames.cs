@@ -99,18 +99,46 @@ public class MiniGames : MonoBehaviour
                 return;
             }
         }
+
+        // 3️⃣ Click directly on line
+        for (int i = 0; i < spriteLines.Length; i++)
+        {
+            LineRenderer line = spriteLines[i];
+            if (line != null)
+            {
+                Vector3 start = line.GetPosition(0);
+                Vector3 end = line.GetPosition(1);
+
+                // Check if mouse is close to line (distance < threshold)
+                float distance = DistancePointToLine(mouseWorld, start, end);
+                if (distance < 0.2f) // adjust threshold as needed
+                {
+                    RemoveConnection(i);
+                    return;
+                }
+            }
+        }
     }
 
-    // -------------------------------
-    //        DRAGGING UPDATE
-    // -------------------------------
-    void UpdateDraggingLine()
+        float DistancePointToLine(Vector3 point, Vector3 a, Vector3 b)
+        {
+            Vector3 ab = b - a;
+            Vector3 ap = point - a;
+            float t = Mathf.Clamp(Vector3.Dot(ap, ab) / ab.sqrMagnitude, 0f, 1f);
+            Vector3 closest = a + t * ab;
+            return Vector3.Distance(point, closest);
+        }
+        // -------------------------------
+        //        DRAGGING UPDATE
+        // -------------------------------
+        void UpdateDraggingLine()
     {
         if (draggingIndex == -1 || currentLine == null) return;
 
         Vector3 startPos = leftSprites[draggingIndex].transform.position;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
+       
 
         // Remove previous highlight
         if (currentlyHighlighted != -1)
@@ -121,14 +149,17 @@ public class MiniGames : MonoBehaviour
 
         int snapIndex = -1;
 
+
         // Check right sprites
         for (int i = 0; i < rightSprites.Length; i++)
         {
+          
             // Skip already used right sprites
             if (System.Array.IndexOf(connectedRight, i) != -1)
                 continue;
 
-            if (rightSprites[i].bounds.Contains(mousePos))
+            Collider2D col = rightSprites[i].GetComponent<Collider2D>();
+            if (col != null && col.OverlapPoint(mousePos))
             {
                 snapIndex = i;
                 rightSprites[i].color = highlightColor;
@@ -212,6 +243,7 @@ public class MiniGames : MonoBehaviour
             Destroy(spriteLines[index].gameObject);
             spriteLines[index] = null;
         }
+
 
         connectedRight[index] = -1;
     }
