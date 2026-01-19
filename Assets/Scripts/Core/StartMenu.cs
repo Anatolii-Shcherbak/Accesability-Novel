@@ -24,7 +24,7 @@ public class StartMenu : MonoBehaviour
     public GameObject[] Levels;
     public static string mainCharacter;
     public static string SupportCharacter;
-    public int level = 1;
+    public int level;
 
     public void Start()
     {
@@ -32,6 +32,7 @@ public class StartMenu : MonoBehaviour
         languageIndex = System.Array.IndexOf(languages, TestDialogueFiles.Languague);
         if (languageIndex == -1) languageIndex = 0;
 
+        level = PlayerPrefs.GetInt("level", 1);
         switch (level)
         {
             case 2:

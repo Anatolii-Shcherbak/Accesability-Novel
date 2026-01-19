@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniGames : MonoBehaviour
 {
@@ -19,13 +20,17 @@ public class MiniGames : MonoBehaviour
     [Header("Highlight Color")]
     public Color highlightColor = Color.yellow;
 
+    public GameObject ConfirmMenu, MiniGame, NovelGame;
+    public Text Gussed, OutOf;
+    public bool Max = false;
+
     private AudioSource audioSource;
     private LineRenderer[] spriteLines;
     private int[] connectedRight;
     private int draggingIndex = -1;
     private LineRenderer currentLine;
     private int currentlyHighlighted = -1;
-
+   
     // >>> ADDED – Correct mapping
     private int[] correctMapping = new int[] { 5, 0, 3, 4, 2, 1 };
 
@@ -288,16 +293,53 @@ public class MiniGames : MonoBehaviour
             string leftName = leftSprites[left].name;
             string rightName = rightSprites[right].name;
 
-            Debug.Log($"Left {left} ({leftName}) → Right {right} ({rightName})");
 
             if (right == correctMapping[left])
                 correctCount++;
         }
 
+        
         Debug.Log($"Correct: {correctCount}/{connectedRight.Length}");
+        if (correctCount == connectedRight.Length) Max = true;
+        ConfirmMenu.SetActive(true);
+        Gussed.text = correctCount.ToString();
+        OutOf.text = connectedRight.Length.ToString();
 
         // 3. Clear connection data after checking
         for (int i = 0; i < connectedRight.Length; i++)
             connectedRight[i] = -1;
+    }
+
+    public void NoClick()
+    {
+        ConfirmMenu.SetActive(false);
+        Max = false;
+    }
+
+    public void YesClick()
+    {
+
+        ConfirmMenu.SetActive(false);
+        MiniGame.SetActive(false);
+        NovelGame.SetActive(true);
+
+        if (Max == true)
+        {
+            TestDialogueFiles instance = GameObject.FindObjectOfType<TestDialogueFiles>();
+
+            if (instance != null)
+                instance.ChoosenPass("1");
+            else
+                Debug.LogError("TestDialogueFiles not found in scene!");
+        }
+        else
+        {
+            TestDialogueFiles instance = GameObject.FindObjectOfType<TestDialogueFiles>();
+
+            if (instance != null)
+                instance.ChoosenPass("2");
+            else
+                Debug.LogError("TestDialogueFiles not found in scene!");
+        }
     }
 }

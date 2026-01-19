@@ -1,0 +1,6 @@
+Narrator "Congrats You Got the max score on minigame"
+
+"PH This is end of the first chapter, next demo level is opened"
+
+NextLevel("2"
+

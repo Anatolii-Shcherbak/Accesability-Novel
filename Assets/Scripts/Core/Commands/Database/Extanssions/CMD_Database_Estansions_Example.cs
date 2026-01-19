@@ -1,16 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using System.Collections.Specialized;
 using COMMANDS;
 using DIALOGUE;
-using UnityEngine.UI;
-using UnityEditor;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
-using System.Xml.Linq;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
+using UnityEngine.Windows;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 
 namespace TESTING
@@ -68,6 +71,8 @@ namespace TESTING
 
             database.AddCommand("ResetCharPos", new Action<string>(ResetCharPos));
 
+            database.AddCommand("NextLevel", new Func<string, IEnumerator>(NextLevel));
+
             /*
             
             database.AddCommand("RotateChar", new Func<string, IEnumerator>(RotateChar));
@@ -77,7 +82,7 @@ namespace TESTING
         }
 
 
-   
+
         private static void PrintDefaultMessage()
         {
             Debug.Log("Printing a default message to console. ");
@@ -263,6 +268,7 @@ namespace TESTING
             }
             Debug.Log(objects);
             Debug.Log(End1);
+            SceneManager.LoadScene("Start");
             yield return null;
         }
 
@@ -645,7 +651,24 @@ private static IEnumerator Ñhscen(string objects)
             }
             PlayerInputManager.Instance.dynamicBool = true;
         }
+        private static IEnumerator NextLevel(string Level)
+        {
+            int levelnum;
+            if (int.TryParse(Level, out levelnum))
+            {
+                PlayerPrefs.SetInt("level", levelnum);
+                PlayerPrefs.Save(); // make sure it writes to disk
+            }
+            else
+            {
+                Debug.Log("Invalid number! Could not parse: " + levelnum);
+                
+            }
+            SceneManager.LoadScene("Start");
+            yield return null;
 
+        }
+        
         private static void ResetCharPos(string charpos)
         {
             string position = charpos;

@@ -1,0 +1,9 @@
+Narrator "Oops you coudn't finish minigame, and now your art would be messed up"
+
+"Ending 1: The Ridiculous Artist unlocked"
+
+GetAchiv("End1" 
+
+
+
+
