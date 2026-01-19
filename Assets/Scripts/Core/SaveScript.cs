@@ -8,8 +8,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using UnityEngine.Windows;
 using File = System.IO.File;
+using Image = UnityEngine.UI.Image;
 //using File = System.IO.File;
 
 
@@ -18,7 +20,7 @@ public class SaveScript : MonoBehaviour
     public GameObject Pages;
     public GameObject confirmation;
     public Text what;
-    public GameObject MenuOverlay;
+    public GameObject MenuOverlay, TextOverlay;
     private string screenshotPath;
     public string savePath;
     public bool Loaded;
@@ -33,7 +35,7 @@ public class SaveScript : MonoBehaviour
     SavingData data = new SavingData();
     StatickSaveData dat = new StatickSaveData();
     public string butn;
-    public Button qbut;
+    public UnityEngine.UI.Button qbut;
     public bool Qsavee = false;
     public GameObject qsv;
     public static SaveScript Instance { get; private set; }
@@ -126,7 +128,7 @@ public class SaveScript : MonoBehaviour
             SaveImage(Char1);
             SaveImage2(Char2);
             SaveData();
-           
+            TextOverlay.SetActive(true);
 
         }
 
@@ -353,6 +355,12 @@ public class SaveScript : MonoBehaviour
 
     public void SaveImage2(Image Char)
     {
+        if (Char2 == null)
+        {
+            Debug.LogError("SaveImage: Char1 is null!");
+            return;
+        }
+
         data.sourceImageName2 = Char.sprite ? Char.sprite.name : "NoSprite";
         data.color2 = Char.color;
         data.size2 = Char.rectTransform.sizeDelta;
@@ -365,6 +373,12 @@ public class SaveScript : MonoBehaviour
     }
     public void SaveImage(Image Char1)
     {
+        if (Char1 == null)
+        {
+            Debug.LogError("SaveImage: Char1 is null!");
+            return;
+        }
+
         data.sourceImageName = Char1.sprite ? Char1.sprite.name : "NoSprite";
         data.color1 = Char1.color;
         data.size = Char1.rectTransform.sizeDelta;
@@ -495,7 +509,9 @@ public void savin()
 
     public void Returning()
     {
+        
         MenuOverlay.SetActive(false);
+        TextOverlay.SetActive(true);
         MenuButtons.Instance.Save = false;
         MenuButtons.Instance.Load = false;
         PlayerInputManager.Instance.dynamicBool = true;

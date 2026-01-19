@@ -14,7 +14,7 @@ public class MenuButtons : MonoBehaviour
 {
    public static MenuButtons Instance { get; private set; }
     public bool Save = false, Load = false, Inhistory = false, InAuto = false; 
-    public GameObject MenuOverlay, Confirmation, pages, history, Char1, Char2, Autoo, EscMen;
+    public GameObject MenuOverlay, Confirmation, pages, history, Char1, Char2, Autoo, EscMen, DialogueMenu;
     public ScrollRect scrollRect;
     public TextMeshProUGUI logText;
     private int maxLines =72;
@@ -119,10 +119,11 @@ public class MenuButtons : MonoBehaviour
     public void SaveLoadMenu()
     {
         PlayerInputManager.Instance.dynamicBool = false;
+
         MenuOverlay.SetActive(true);
         Confirmation.SetActive(false);
         pages.SetActive(true);
-
+        DialogueMenu.SetActive(false);
         assignScreens();
     }
    public void assignScreens()

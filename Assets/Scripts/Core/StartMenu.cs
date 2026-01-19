@@ -6,11 +6,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static TreeEditor.TextureAtlas;
 
 public class StartMenu : MonoBehaviour
 {
-    public GameObject menu, prequel, Loaddd, Help, Achiv, CharChoose, config;
+    public GameObject menu, prequel, Loaddd, Help, Achiv, CharChoose, config, backgroundColorless, backgroundColor;
     public Text  End1, End2, End3, lang, ChaptNo, ChaptName;
+    public Text[] Ui;
     public AudioSource MainMusick;
     public AudioClip newClip;
     public float typingSpeed = 0.05f;
@@ -18,8 +20,11 @@ public class StartMenu : MonoBehaviour
     private string[] languages = { "EN", "UA" };
     private int languageIndex = 0;
 
+    public SpriteRenderer ChooseBackground;
+    public GameObject[] Levels;
     public static string mainCharacter;
     public static string SupportCharacter;
+    public int level = 1;
 
     public void Start()
     {
@@ -27,7 +32,45 @@ public class StartMenu : MonoBehaviour
         languageIndex = System.Array.IndexOf(languages, TestDialogueFiles.Languague);
         if (languageIndex == -1) languageIndex = 0;
 
-       
+        switch (level)
+        {
+            case 2:
+                backgroundColorless.SetActive(false);
+                backgroundColor.SetActive(true);
+
+                Color blue = new Color(74f / 255f, 166f / 255f, 215f / 255f);
+
+                foreach (Text txt in Ui)
+                {
+                    txt.color = blue;
+                }
+
+                Debug.Log("Level2");
+                break;
+            case 3:
+                Debug.Log("a is a string");
+                break;
+            case 4:
+                Debug.Log("a is a string");
+                break;
+            case 5:
+                Debug.Log("a is a string");
+                break;
+
+            default:
+                backgroundColorless.SetActive(true);
+                backgroundColor.SetActive(false);
+
+                Color gray = new Color(144f / 255f, 144f / 255f, 144f / 255f);
+
+                foreach (Text txt in Ui)
+                {
+                    txt.color = gray;
+                }
+
+                Debug.Log("Level1");
+                break;
+        }
         // Add button listener
     }
     public void HelpMenu()
@@ -180,13 +223,6 @@ public class StartMenu : MonoBehaviour
         StartCoroutine(ShowText());
     }
 
-    public void chosinGGRey()
-    {
-
-        TestDialogueFiles.mainCharacter = "Rey";
-        TestDialogueFiles.SupportCharacter = "Mayua";
-    }
-
     public void chosinGGNeil()
     {
 
@@ -198,7 +234,53 @@ public class StartMenu : MonoBehaviour
         menu.SetActive(false);
         CharChoose.SetActive(true);
         MainMusick.Stop();
+        Sprite newSprite;
 
+        switch (level)
+        {
+            case 2:
+
+                 newSprite = Resources.Load<Sprite>("Backgrounds/Startgame");
+
+                if (newSprite != null)
+                {
+                    ChooseBackground.sprite = newSprite;
+                }
+
+                foreach (GameObject Character in Levels)
+                {
+                    Character.SetActive(false);
+                }
+                Levels[1].SetActive(true);
+
+                Debug.Log("Level2");
+                break;
+            case 3:
+                Debug.Log("a is a string");
+                break;
+            case 4:
+                Debug.Log("a is a string");
+                break;
+            case 5:
+                Debug.Log("a is a string");
+                break;
+
+            default:
+
+                newSprite = Resources.Load<Sprite>("Backgrounds/StartGameMonochrome");
+
+                if (newSprite != null)
+                {
+                    ChooseBackground.sprite = newSprite;
+                }
+
+                foreach (GameObject Character in Levels)
+                {
+                    Character.SetActive(false);
+                }
+                Levels[0].SetActive(true);
+                break;
+        }
     }
  ////////////////////////////////////////// NEW GAME 
  ///
