@@ -3219,7 +3219,7 @@ GameObject:
   - component: {fileID: 318002707}
   m_Layer: 0
   m_Name: 4-Dialogue
-  m_TagString: Untagged
+  m_TagString: DialogMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9206,6 +9206,7 @@ MonoBehaviour:
   NovelGame: {fileID: 318002705}
   Gussed: {fileID: 1217087717}
   OutOf: {fileID: 2122296635}
+  Max: 0
 --- !u!1 &910489269
 GameObject:
   m_ObjectHideFlags: 0
@@ -10905,7 +10906,7 @@ GameObject:
   - component: {fileID: 1050095786}
   - component: {fileID: 1050095785}
   m_Layer: 0
-  m_Name: rootNormal
+  m_Name: rootSoundiel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19737,7 +19738,7 @@ GameObject:
   - component: {fileID: 1720391416}
   - component: {fileID: 1720391417}
   m_Layer: 0
-  m_Name: RootMono
+  m_Name: RootNeil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

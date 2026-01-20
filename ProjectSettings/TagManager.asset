@@ -11,6 +11,7 @@ TagManager:
   - Option3
   - EndOpt
   - Pages
+  - DialogMenu
   layers:
   - Default
   - TransparentFX

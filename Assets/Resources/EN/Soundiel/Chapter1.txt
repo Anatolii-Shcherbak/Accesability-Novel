@@ -1,13 +1,10 @@
-Narrator "Hm new dey new life"
+RecolorDialogue("Soundiel"
+Narrator "[PH] Here should be some Preview story..."
 
-"I hate thoose days..."
-
-Chchapt("1"
-
-
-
-
-
-
+Chmus("SoundielTreckDeafshort"
+Chscene("SoundielScene1"
+Narrator "Even if I can't hear, the music isn't gone. It has just moved from my ears into my marrow."
+Narrator "My life is music, and I won't throw it away"
+Narrator "[PH] "
 
 

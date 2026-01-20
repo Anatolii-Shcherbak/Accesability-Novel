@@ -70,6 +70,7 @@ namespace TESTING
             database.AddCommand("DeadReason", new Func<string, IEnumerator>(DeadReason));
 
             database.AddCommand("ResetCharPos", new Action<string>(ResetCharPos));
+            database.AddCommand("RecolorDialogue", new Action<string>(RecolorDialogue));
 
             database.AddCommand("NextLevel", new Func<string, IEnumerator>(NextLevel));
 
@@ -668,7 +669,45 @@ private static IEnumerator Ñhscen(string objects)
             yield return null;
 
         }
+
+        private static void RecolorDialogue(string Name)
+        {
+            GameObject dialogueMenu = GameObject.FindWithTag("DialogMenu");
+
+            if (dialogueMenu == null)
+            {
+                Debug.LogError("DialogueMenu object not found!");
+                return;
+            }
+
+            // Find the children by name
+            Transform neilChild = dialogueMenu.transform.Find("RootNeil");
+            Transform soundielChild = dialogueMenu.transform.Find("rootSoundiel");
+
+
+            if (neilChild == null || soundielChild == null)
+            {
+                Debug.LogError("Child objects not found under the parent!");
+              
+                return;
+            }
+
+            // Enable/disable based on the Name
+            if (Name == "Soundiel")
+            {
+                soundielChild.gameObject.SetActive(true);
+                neilChild.gameObject.SetActive(false);
+            }
+            else
+            {
+                neilChild.gameObject.SetActive(true);
+                soundielChild.gameObject.SetActive(false);
+            }
+
+
+        }
         
+
         private static void ResetCharPos(string charpos)
         {
             string position = charpos;
