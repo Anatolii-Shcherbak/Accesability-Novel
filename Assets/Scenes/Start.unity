@@ -2011,8 +2011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.25817, y: 0.05137}
-  m_SizeDelta: {x: 360.60925, y: 119.76923}
+  m_AnchoredPosition: {x: -0.28929, y: 0.011}
+  m_SizeDelta: {x: 463.0863, y: 119.76928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215076299
 MonoBehaviour:
@@ -2047,7 +2047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Finished Demo
 --- !u!222 &215076300
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2706,6 +2706,7 @@ MonoBehaviour:
   - {fileID: 1620615736}
   - {fileID: 1935328512}
   level: 1
+  currentlevel: 0
 --- !u!4 &278393017
 Transform:
   m_ObjectHideFlags: 0
@@ -10816,8 +10817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.13894, y: 0.13791}
-  m_SizeDelta: {x: 938.1172, y: 138.07996}
+  m_AnchoredPosition: {x: 0.243, y: 0.142}
+  m_SizeDelta: {x: 667.7213, y: 90.36604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098187873
 MonoBehaviour:
@@ -10852,7 +10853,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Neil the Artist
 --- !u!222 &1098187874
 CanvasRenderer:
   m_ObjectHideFlags: 0

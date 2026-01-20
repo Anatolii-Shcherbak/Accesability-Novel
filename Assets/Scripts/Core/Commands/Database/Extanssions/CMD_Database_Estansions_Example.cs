@@ -243,7 +243,7 @@ namespace TESTING
         {
             if (objects != null)
             {
-                if (PlayerPrefs.HasKey("End1"))
+                if (PlayerPrefs.HasKey("End1") && End1 != "" && End1 != null)
                 {
                     // Load the saved value from PlayerPrefs
                     End1 = PlayerPrefs.GetString("End1");
@@ -258,7 +258,7 @@ namespace TESTING
                 if (End1 == objects && End1 != "" && End1 != null) 
                 {
                     //End1 = "";
-                    PlayerPrefs.SetString(End1, "");
+                    PlayerPrefs.SetString(End1, "End1");
                     PlayerPrefs.Save();
                 }
             }
@@ -277,7 +277,7 @@ namespace TESTING
         {
             if (objects != null)
             {
-                if (PlayerPrefs.HasKey("End2"))
+                if (PlayerPrefs.HasKey("End2") && End2 != "" && End2 != null)
                 {
                     // Load the saved value from PlayerPrefs
                     End2 = PlayerPrefs.GetString("End2");
@@ -292,7 +292,7 @@ namespace TESTING
                 if (End2 == objects && End2 != "" && End2 != null)
                 {
                     //End1 = "";
-                    PlayerPrefs.SetString(End2, "");
+                    PlayerPrefs.SetString(End2, "End2");
                     PlayerPrefs.Save();
                 }
             }
@@ -310,7 +310,7 @@ namespace TESTING
         {
             if (objects != null)
             {
-                if (PlayerPrefs.HasKey("End3"))
+                if (PlayerPrefs.HasKey("End3") && End3 != "" && End3 != null)
                 {
                     // Load the saved value from PlayerPrefs
                     End3 = PlayerPrefs.GetString("End3");
@@ -325,7 +325,7 @@ namespace TESTING
                 if (End3 == objects && End3 != "" && End3 != null)
                 {
                     //End1 = "";
-                    PlayerPrefs.SetString(End3, "");
+                    PlayerPrefs.SetString(End3, "End3");
                     PlayerPrefs.Save();
                 }
             }
@@ -335,7 +335,8 @@ namespace TESTING
                 Debug.LogError("Achivment hasnt found");
             }
             Debug.Log(objects);
-            Debug.Log(End1);
+            Debug.Log(End3);
+            SceneManager.LoadScene("Start");
             yield return null;
         }
 

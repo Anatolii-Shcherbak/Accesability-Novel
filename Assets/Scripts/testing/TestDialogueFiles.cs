@@ -1,9 +1,10 @@
+using CHARACTERS;
 using DIALOGUE;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using CHARACTERS;
 using System.IO;
+using System.Xml.Linq;
+using UnityEngine;
 public class TestDialogueFiles : MonoBehaviour
 {
 
@@ -106,8 +107,36 @@ public class TestDialogueFiles : MonoBehaviour
             Debug.LogError($"File not found: {currentAct}");
             return;
         }
+        else
+        {
+           
+            if (PlayerPrefs.GetInt("currentlevel", 1) == 2)
+            {
+                GameObject dialogueMenu = GameObject.FindWithTag("DialogMenu");
 
-        Debug.Log($"Successfully loaded file: {currentAct}");
+                if (dialogueMenu == null)
+                {
+                    Debug.LogError("DialogueMenu object not found!");
+                    return;
+                }
+
+                // Find the children by name
+                Transform neilChild = dialogueMenu.transform.Find("RootNeil");
+                Transform soundielChild = dialogueMenu.transform.Find("rootSoundiel");
+
+
+                if (neilChild == null || soundielChild == null)
+                {
+                    Debug.LogError("Child objects not found under the parent!");
+
+                    return;
+                }
+                    soundielChild.gameObject.SetActive(true);
+                    neilChild.gameObject.SetActive(false);
+            }
+        }
+
+            Debug.Log($"Successfully loaded file: {currentAct}");
        
         lines.AddRange(textAsset.text.Split('\n'));
 

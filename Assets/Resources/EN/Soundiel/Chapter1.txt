@@ -5,6 +5,20 @@ Chmus("SoundielTreckDeafshort"
 Chscene("SoundielScene1"
 Narrator "Even if I can't hear, the music isn't gone. It has just moved from my ears into my marrow."
 Narrator "My life is music, and I won't throw it away"
-Narrator "[PH] "
+
+Chscene("SoundielRoof"
+Narrator "..."
+
+Chchar("L" GG.Idle
+Chchar("R" ZiaNotte
+
+GG"Grandma?"
+ZiaNotte"How many times did I tell you not to go alone..."
+"Youth this days so much reckless"
+
+Narrator "This is the End for current Demo"
+Narrator "Achivement 3 Finish demo is acuqired!"
+GetAchiv3("End3" 
+
 
 

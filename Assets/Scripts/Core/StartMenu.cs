@@ -30,7 +30,7 @@ public class StartMenu : MonoBehaviour
     public GameObject[] Levels;
     public static string mainCharacter;
     public static string SupportCharacter;
-    public int level;
+    public int level, currentlevel;
 
     public void Start()
     {
@@ -378,7 +378,8 @@ public class StartMenu : MonoBehaviour
 
     public void chosinGGNeil()
     {
-
+        PlayerPrefs.SetInt("currentlevel", 1);
+        PlayerPrefs.Save();
         TestDialogueFiles.mainCharacter = "Neil";
         TestDialogueFiles.SupportCharacter = "Rey";
         MainMusick.clip = Chapt1;
@@ -390,6 +391,8 @@ public class StartMenu : MonoBehaviour
 
     public void chosinGGSoundiel()
     {
+        PlayerPrefs.SetInt("currentlevel", 2);
+        PlayerPrefs.Save();
         TestDialogueFiles.mainCharacter = "Soundiel";
         TestDialogueFiles.SupportCharacter = "Rey";
         MainMusick.clip = Chapt2;

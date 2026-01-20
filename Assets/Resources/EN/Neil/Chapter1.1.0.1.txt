@@ -1,6 +1,8 @@
 Narrator "Congrats You Got the max score on minigame"
 
+"Achivment Neil The Artist unlocked"
 "PH This is end of the first chapter, next demo level is opened"
+GetAchiv2("End2"
 
 NextLevel("2"
 
