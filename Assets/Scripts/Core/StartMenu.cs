@@ -145,17 +145,17 @@ public class StartMenu : MonoBehaviour
         PlayerPrefs.GetString(CMD_Database_Estansions_Example.End3);
 
         Debug.Log(CMD_Database_Estansions_Example.End1);
-        if (CMD_Database_Estansions_Example.End1 != "" || CMD_Database_Estansions_Example.End1 != null)
+        if (CMD_Database_Estansions_Example.End1 != "" && CMD_Database_Estansions_Example.End1 != null)
         {
             End1.gameObject.SetActive(true);
         }
         Debug.Log(CMD_Database_Estansions_Example.End2);
-        if (CMD_Database_Estansions_Example.End2 == "" || CMD_Database_Estansions_Example.End2 == null)
+        if (CMD_Database_Estansions_Example.End2 != "" && CMD_Database_Estansions_Example.End2 != null)
         {
             End2.gameObject.SetActive(true);
         }
         Debug.Log(CMD_Database_Estansions_Example.End3);
-        if (CMD_Database_Estansions_Example.End3 == "" || CMD_Database_Estansions_Example.End3 == null)
+        if (CMD_Database_Estansions_Example.End3 != "" && CMD_Database_Estansions_Example.End3 != null)
         {
             End3.gameObject.SetActive(true);
         }
@@ -307,8 +307,29 @@ public class StartMenu : MonoBehaviour
     }
 
 
+    public void Cheatlvl1()
+    {
 
-     private IEnumerator ShowText(string text1, string text2)
+        Debug.Log("CheatLvl1");
+        PlayerPrefs.SetInt("level", 1);
+        PlayerPrefs.Save();
+
+        level = PlayerPrefs.GetInt("level", 1);
+        SceneManager.LoadScene("Start");
+
+    }
+
+    public void Cheatlvl2()
+    {
+        Debug.Log("CheatLvl2");
+        PlayerPrefs.SetInt("level", 2);
+        PlayerPrefs.Save();
+
+        level = PlayerPrefs.GetInt("level", 2);
+        SceneManager.LoadScene("Start");
+    }
+
+    private IEnumerator ShowText(string text1, string text2)
     {
 
         // Очищуємо початково
